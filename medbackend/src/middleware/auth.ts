@@ -1,0 +1,29 @@
+import { type Request, type Response, type NextFunction } from "express";
+import jwt from "jsonwebtoken";
+import User from "../models/User.js";
+
+const SECRET = process.env.JWT_SECRET || "secret";
+export default async function auth(req: Request, res: Response, next: NextFunction) {
+  try {
+    const token = req.cookies?.jwt;
+
+    if (!token) return res.status(401).json({ message: "Not authenticated" });
+
+    const payload: any = jwt.verify(token, SECRET);
+
+    const user = await User.findById(payload.sub);
+
+    if (!user) return res.status(401).json({ message: 
+        "Token invalid" });
+
+
+    (req as any).user = user;
+
+
+    return next();
+
+    
+  } catch (err) {
+    return res.status(401).json({ message: "Auth error" });
+  }
+}
