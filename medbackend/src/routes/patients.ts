@@ -1,7 +1,7 @@
 import {Router} from "express";
-import auth from "../middleware/auth.js";
+import auth from "../middleware/auth.ts";
 
-import { listPatients, createPatient, deletePatient, updatePatient } from "../controllers/patientController.js";
+import { listPatients, createPatient, deletePatient, updatePatient } from "../controllers/patientController.ts";
 
 const router = Router();
 

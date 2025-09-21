@@ -6,18 +6,16 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import { type Request, type Response } from "express";
-import connectDB from "./config/database.js";
-import authRoutes from "./routes/auth.js";
-import webhookRoutes from "./routes/webhooks.js";
-import openmicRoutes from "./routes/openmicProxy.js";
-import callRoutes from "./routes/calls.js";
-import patientRoutes from "./routes/patients.js";
+import connectDB from "./config/database.ts";
+import authRoutes from "./routes/auth.ts";    
+import webhookRoutes from "./routes/webhooks.ts";
+import openmicRoutes from "./routes/openmicProxy.ts";
+import callRoutes from "./routes/calls.ts";
+import patientRoutes from "./routes/patients.ts";
 
 const app = express();
 
 const PORT = process.env.PORT || 4000;
-
-const FRONTEND = process.env.FRONTEND_URL || "http://localhost:3000";
 
 
 app.use(express.json());
@@ -27,18 +25,17 @@ app.use(cookieParser());
 app.use(
   cors({
 
-  origin: FRONTEND,
+  origin:"*",
   credentials: true
 })
 
 );
-
-// Health
+ 
 app.get("/", (req: Request, res: Response) => {
   res.json({ ok: true, message: "Welcome to med ai backend" });
 });
 
-// DB
+ 
 connectDB();
  
 
@@ -60,9 +57,8 @@ app.use("/api/patients", patientRoutes);
 
 
 
-app.listen(PORT, () => {
-  console.log("--------------------------------");
-  console.log(`Server is running at :${PORT}`);
+app.listen(PORT, () => { 
+  console.log(`Server is running on port  :${PORT}`);
 
 
 

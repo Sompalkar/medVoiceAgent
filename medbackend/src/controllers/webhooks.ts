@@ -1,6 +1,6 @@
 import { type  Request, type  Response } from "express";
-import Patient from "../models/Patient.js";
-import CallLog from "../models/CallLog.js";
+import Patient from "../models/Patient.ts";
+import CallLog from "../models/CallLog.ts";
 
 
 export async function handlePreCall(req: Request, res: Response) {

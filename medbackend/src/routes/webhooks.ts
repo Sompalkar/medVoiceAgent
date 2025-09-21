@@ -1,6 +1,6 @@
 import {Router} from "express";
 
-import { handlePreCall, handleGetPatient, handlePostCall } from "../controllers/webhooks.js";
+import { handlePreCall, handleGetPatient, handlePostCall } from "../controllers/webhooks.ts";
 
 const router = Router();
  

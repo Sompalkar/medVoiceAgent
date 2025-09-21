@@ -1,5 +1,5 @@
 import { type Request, type Response } from "express";
-import CallLog from "../models/CallLog.js";
+import CallLog from "../models/CallLog.ts";
 
 export async function listSavedCalls(req: Request, res: Response) {
   try {
@@ -14,6 +14,8 @@ export async function listSavedCalls(req: Request, res: Response) {
     return res.status(500).json({ message: "Failed to load calls" });
   }
 }
+
+
 
 export async function getCallById(req: Request, res: Response) {
   try {

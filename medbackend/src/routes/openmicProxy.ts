@@ -1,8 +1,8 @@
 import {Router} from "express";
-import auth from "../middleware/auth.js";
+import auth from "../middleware/auth.ts";
 
 
-import { listBots, createBot, updateBot, deleteBot, listOpenMicCalls, getBot } from "../controllers/openmicProxy.js";
+import { listBots, createBot, updateBot, deleteBot, listOpenMicCalls, getBot } from "../controllers/openmicProxy.ts";
 const router = Router();
  
 router.use(auth);

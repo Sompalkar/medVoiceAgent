@@ -3,8 +3,10 @@
 
 import { type Request,type  Response } from "express";
 import bcrypt from "bcryptjs";
-import User from "../models/User.js";
-import { signToken, setTokenCookie, clearTokenCookie } from "../utils/jwt.js";
+import User from "../models/User.ts";
+import { signToken, setTokenCookie, clearTokenCookie } from "../utils/jwt.ts";
+
+
 
 export async function register(req: Request, res: Response) {
   try {

@@ -1,7 +1,7 @@
 import {Router} from "express";
-import auth from "../middleware/auth.js";
+import auth from "../middleware/auth.ts";
 
-import { listSavedCalls, getCallById } from "../controllers/callController.js";
+import { listSavedCalls, getCallById } from "../controllers/callController.ts";
 
 
 const router = Router();

@@ -1,5 +1,5 @@
 import { type Request, type Response } from "express";
-import Patient from "../models/Patient.js";
+import Patient from "../models/Patient.ts";
 
 export async function listPatients(req: Request, res: Response) {
 

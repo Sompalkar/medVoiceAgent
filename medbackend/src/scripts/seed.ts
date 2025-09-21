@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 dotenv.config();
-import Patient from "../models/Patient.js";
+import Patient from "../models/Patient.ts";
 
 async function run() {
   const uri = process.env.MONGO_URI || "mongodb://localhost:27017/meddb";
