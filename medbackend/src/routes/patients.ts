@@ -7,6 +7,7 @@ const router = Router();
 
 router.use(auth);
 
+
 router.get("/", listPatients);
 
 router.post("/", createPatient);
