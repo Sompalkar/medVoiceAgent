@@ -1,4 +1,0 @@
-[dotenv@17.2.2] injecting env (6) from .env -- tip: ⚙️  override existing env vars with { override: true }
-[dotenv@17.2.2] injecting env (0) from .env -- tip: 📡 auto-backup env with Radar: https://dotenvx.com/radar
-Server is running at :4000
-MongoDB connected

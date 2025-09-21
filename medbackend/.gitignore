@@ -1,2 +1,17 @@
 # dependencies
 /node_modules
+
+# env files
+.env
+.env*
+
+# build outputs
+/dist
+/build
+/coverage
+
+# logs and temporary files
+/logs
+/tmp
+*.log
+server.log
