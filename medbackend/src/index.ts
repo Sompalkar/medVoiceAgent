@@ -2,42 +2,56 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
+
 dotenv.config();
 
-import { type Request , type Response } from 'express';
+import { type Request, type Response } from "express";
+import connectDB from "./config/database.js";
+import authRoutes from "./routes/auth.js";
+import webhookRoutes from "./routes/webhooks.js";
+import openmicRoutes from "./routes/openmicProxy.js";
+import callRoutes from "./routes/calls.js";
+import patientRoutes from "./routes/patients.js";
 
-
-const app= express();
-
-
+const app = express();
 
 const PORT = process.env.PORT || 4000;
+
 const FRONTEND = process.env.FRONTEND_URL || "http://localhost:3000";
- 
+
 
 app.use(express.json());
+
 app.use(cookieParser());
 
+app.use(
+  cors({
 
-app.use(cors({
   origin: FRONTEND,
   credentials: true
-}));
+})
+
+);
+
+// Health
+app.get("/", (req: Request, res: Response) => {
+  res.json({ ok: true, message: "Welcome to med ai backend" });
+});
+
+// DB
+connectDB();
  
 
 
+app.use("/api/auth", authRoutes);
 
+app.use("/api/webhook", webhookRoutes);
 
-app.get("/", (req:Request, res:Response)=>{
-    res.send(" Welcome to med ai backend....")
-})
+app.use("/api/openmic", openmicRoutes);
 
+app.use("/api/calls", callRoutes);
 
-
-
-
-
-
+app.use("/api/patients", patientRoutes);
 
 
 
@@ -46,11 +60,13 @@ app.get("/", (req:Request, res:Response)=>{
 
 
 
-app.listen(PORT, ()=>{
+app.listen(PORT, () => {
+  console.log("--------------------------------");
+  console.log(`Server is running at :${PORT}`);
 
-       console.log("Server is running at :8000");
 
-})
+
+});
 
 
 

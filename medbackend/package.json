@@ -2,16 +2,21 @@
   "name": "medbackend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node --watch --enable-source-maps ./dist/index.js",
+    "build": "tsc -p tsconfig.json",
+    "start": "node ./dist/index.js",
+    "seed": "tsc -p tsconfig.json && node ./dist/scripts/seed.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "@types/axios": "^0.9.36",
     "@types/cors": "^2.8.19",
+    "axios": "^1.12.2",
     "bcryptjs": "^3.0.2",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",

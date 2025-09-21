@@ -18,7 +18,17 @@ const patientSchema = new mongoose.Schema({
 
     notes: { type: String },
 
-    lastVisit: { type: Date }
+    lastVisit: { type: Date },
+
+    email: { type: String },
+    address: { type: String },
+    insuranceProvider: { type: String },
+    policyNumber: { type: String },
+    primaryPhysician: { type: String },
+    conditions: { type: [String], default: [] },
+    preferredLanguage: { type: String },
+    emergencyContactName: { type: String },
+    emergencyContactPhone: { type: String }
 
 }, { timestamps: true });
 
