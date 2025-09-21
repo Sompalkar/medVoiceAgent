@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import AuthCheck from "../auth-check";
 
-const BACKEND = process.env.NEXT_PUBLIC_BACKEND || "http://localhost:4000";
+const BACKEND = process.env.NEXT_PUBLIC_BACKEND || "/api";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();

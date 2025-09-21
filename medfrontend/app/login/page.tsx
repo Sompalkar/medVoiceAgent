@@ -4,7 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import Link from "next/link";
 
-const BACKEND = process.env.NEXT_PUBLIC_BACKEND || "http://localhost:4000";
+const BACKEND = process.env.NEXT_PUBLIC_BACKEND || "/api";
 
 export default function LoginPage() {
   const router = useRouter();

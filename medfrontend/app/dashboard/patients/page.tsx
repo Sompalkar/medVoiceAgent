@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const BACKEND = process.env.NEXT_PUBLIC_BACKEND || "http://localhost:4000";
+const BACKEND = process.env.NEXT_PUBLIC_BACKEND || "/api";
 
 type Patient = {
   _id?: string;

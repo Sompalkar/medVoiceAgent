@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 
-const BACKEND = process.env.NEXT_PUBLIC_BACKEND || "http://localhost:4000";
+const BACKEND = process.env.NEXT_PUBLIC_BACKEND || "/api";
 
 export default function AuthCheck({ children }: { children: React.ReactNode }) {
   const router = useRouter();

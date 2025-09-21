@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import axios from "axios";
 
-const BACKEND = process.env.NEXT_PUBLIC_BACKEND || "http://localhost:4000";
+const BACKEND = process.env.NEXT_PUBLIC_BACKEND || "/api";
 
 type Call = {
   _id: string;

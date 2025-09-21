@@ -24,11 +24,12 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:3000",
+    origin: ["http://localhost:3000", "https://medai.somn.in", "http://medai.somn.in"],
     credentials: true
   })
 );
  
+
 app.get("/", (req: Request, res: Response) => {
   res.json({ ok: true, message: "Welcome to med ai backend" });
 });
