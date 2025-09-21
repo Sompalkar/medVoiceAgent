@@ -32,7 +32,20 @@ export default function BotsPage() {
     try {
       const res = await axios.get(`${BACKEND}/api/openmic/bots`, { withCredentials: true });
       const data = res.data;
-      const list = (data?.bots || data?.data || data || []).map((b: Bot) => ({ ...b, __editName: b.name || "", __editPrompt: b.instructions || "" }));
+      const rawList: any[] = (data?.bots || data?.data || data || []);
+      // If list items lack instructions, fetch each bot detail to hydrate prompt/instructions
+      const hydrated: BotRow[] = [];
+      for (const b of rawList) {
+        let instr = (b.instructions || b.prompt || "");
+        if (!instr && b.uid) {
+          try {
+            const det = await axios.get(`${BACKEND}/api/openmic/bots/${b.uid}`, { withCredentials: true });
+            instr = det.data?.instructions || det.data?.prompt || instr;
+          } catch {}
+        }
+        hydrated.push({ ...b, instructions: instr, __editName: b.name || "", __editPrompt: instr || "" });
+      }
+      const list = hydrated;
       setBots(list);
     } catch (e: any) {
       const raw = e?.response?.data?.message ?? e?.response?.data?.error ?? e?.message;

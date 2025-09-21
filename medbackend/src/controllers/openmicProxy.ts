@@ -25,6 +25,24 @@ export async function listBots(req: Request, res: Response) {
   }
 }
 
+export async function getBot(req: Request, res: Response) {
+  try {
+    const { uid } = req.params;
+
+    const resp = await axios.get(`${OPENMIC_BASE}/bots/${uid}`, { headers });
+
+    return res.status(resp.status).json(resp.data);
+
+  } catch (err: any) {
+    const status = err?.response?.status || 500;
+
+    const detail = err?.response?.data || err.message;
+
+    return res.status(status).json({ error: detail, message: typeof detail === 'string' ? detail : (detail?.error || 'OpenMic error') });
+    
+  }
+}
+
 export async function createBot(req: Request, res: Response) {
   try {
     const defaultPrompt = "You are a medical intake agent. Greet the caller, confirm consent for recording, ask for their Medical ID, and when provided call the function get_patient_info with patientId. Use returned allergies/medications accurately. Be concise and empathetic; end with summary and next steps.";
